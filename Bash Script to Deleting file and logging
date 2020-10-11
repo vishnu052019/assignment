@@ -1,14 +1,23 @@
 #!/bin/sh
- 
-#delets older than 48hrs 
-find $/home/ubuntu/audios/* -mmin +2880 -exec rm {} \;
 
+path="/home/ubuntu/audios/"
+#gets 48 hours old .wav files only
+completpath=$(find $path -maxdepth 1 -name "*.wav"  -type f -mmin +001)
+#present time
+timestamp=`date +%d-%m-%Y`
+#log file name
+filenamelog=deleted-files-$timestamp.log
 
-##creates log file with the name + date format ##
+log=$path$filenamelog
+deletedate=$(date -Is)
+#delets 48hours old .wav files 
+for filename in $completpath
 
-now=$(date +"%m_%d_%Y")
-X=$ls -i
-time of creation= $sudo debugfs -R 'stat <X>' /home/ubuntu/audios
-echo $"{FILENAME}" "${time of creation}" "${now}"
-done >>/var/log/logfile
+do
 
+        onlyfilename=$(basename $filename)
+        ctime=$(stat -c %y $filename)
+        rm $filename
+        echo $onlyfilename $ctime $deletedate>>$log
+
+done
