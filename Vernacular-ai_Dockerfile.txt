@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # Install Telnet
-RUN apt-get update && apt-get install telnet 
+RUN apt-get update && apt-get install -y telnet 
 
 # Install Curl
 RUN apt-get install -y curl
