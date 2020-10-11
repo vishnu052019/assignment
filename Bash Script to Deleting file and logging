@@ -1,7 +1,8 @@
 #!/bin/sh
  
 #delets older than 48hrs 
-find $/home/ubuntu/audios/  * -mmin +2880 -exec rm {} \;
+find $/home/ubuntu/audios/* -mmin +2880 -exec rm {} \;
+
 
 ##creates log file with the name + date format ##
 
