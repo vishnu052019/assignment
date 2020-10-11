@@ -1,0 +1,12 @@
+#!/bin/sh
+ 
+#delets older than 48hrs 
+find $/home/ubuntu/audios/  * -mmin +2880 -exec rm {} \;
+
+##creates log file with the name + date format ##
+
+now=$(date +"%m_%d_%Y")
+time of creation= $sudo debugfs -R 'stat <X>' /home/ubuntu/audios
+echo $"{FILENAME}" "${time of creation}" "${now}"
+done >>/var/log/logfile
+
